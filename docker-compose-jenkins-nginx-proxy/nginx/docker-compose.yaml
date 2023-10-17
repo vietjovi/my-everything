@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  reverse:
+    container_name: nginx_reverse_proxy
+    hostname: reverse
+    image: nginx
+    restart: always
+    privileged: true
+    user: root
+    ports:
+      - 80:80
+      - 8083:8080
+    volumes:
+      - /home/ubuntu/nginx-docker/conf:/etc/nginx
+      - /home/ubuntu/nginx-docker/cert:/etc/ssl/certs
+        # - /home/ubuntu/nginx-docker/cert:/etc/ssl/private
